@@ -1,6 +1,5 @@
 package com.scamprevention.ai.ui.admin
 
-
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -9,13 +8,14 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.scamprevention.ai.AppBuild   // ← ここを追加
 
 class AdminModeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // リリースビルドでは表示しない
-        if (!BuildConfig.DEBUG) {
+        if (!AppBuild.DEBUG) {
             finish()
             return
         }

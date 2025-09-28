@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.plugin.compose") // Kotlin 2.0 + Compose 対応で追加
+    id("org.jetbrains.kotlin.plugin.compose")   // Kotlin 2.0 + Compose に必須
 }
 
 android {
@@ -26,15 +26,21 @@ android {
                 "proguard-rules.pro"
             )
         }
-        debug {
-            // デバッグ用の追加設定があればここに書く
-        }
     }
 
-    // ✅ BuildConfig と Compose を有効化
     buildFeatures {
-        buildConfig = true
-        compose = true
+        buildConfig = true   // ← BuildConfig を生成
+        compose = true       // ← Jetpack Compose を有効化
+    }
+
+    // ✅ debug/release 用のソースセットを明示
+    sourceSets {
+        getByName("release") {
+            java.srcDir("src/release/java")
+        }
+        getByName("debug") {
+            java.srcDir("src/debug/java")
+        }
     }
 
     compileOptions {
@@ -51,10 +57,10 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.activity:activity-compose:1.8.2")
 
-    // ✅ Compose BOM を使ってバージョンを一元管理
+    // ✅ Compose BOM（バージョン一括管理）
     implementation(platform("androidx.compose:compose-bom:2023.10.01"))
 
-    // ✅ Compose UI 関連
+    // ✅ Compose 基本モジュール
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
