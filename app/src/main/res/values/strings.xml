@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">TestApp</string>
+    <string name="app_name">Scam Prevention App</string>
+
+    <!-- 通知チャンネル -->
+    <string name="channel_scam_alerts">詐欺警告</string>
+    <string name="channel_scam_alerts_desc">疑わしい通知を検知したときに表示する警告</string>
 </resources>
