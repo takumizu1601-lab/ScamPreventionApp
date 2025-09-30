@@ -1,20 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.ai">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:name=".ScamApp"
         android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        android:theme="@style/Theme.TestApp">
 
-        <activity android:name=".ui.admin.MainActivity">
+        <activity
+            android:name=".ui.admin.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+                <service
+                    android:name=".notifications.AppNotificationListener"
+                    android:label="@string/app_name"
+                    android:exported="false"
+                    android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+                    <intent-filter>
+                        <action android:name="android.service.notification.NotificationListenerService" />
+                    </intent-filter>
+                </service>
             </intent-filter>
         </activity>
 
     </application>
+
 </manifest>
