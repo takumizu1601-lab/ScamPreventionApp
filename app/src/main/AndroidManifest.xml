@@ -16,17 +16,19 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-                <service
-                    android:name=".notifications.AppNotificationListener"
-                    android:label="@string/app_name"
-                    android:exported="false"
-                    android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
-                    <intent-filter>
-                        <action android:name="android.service.notification.NotificationListenerService" />
-                    </intent-filter>
-                </service>
             </intent-filter>
         </activity>
+
+        <!-- ✅ 通知リスナーは application の直下に移動 -->
+        <service
+            android:name=".notifications.AppNotificationListener"
+            android:label="@string/app_name"
+            android:exported="false"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
 
     </application>
 
