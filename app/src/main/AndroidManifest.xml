@@ -1,27 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.scamprevention.ai">
+    package="com.example.ai">
 
     <application
+        android:name=".ScamApp"
         android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.TestApp">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-        <activity
-            android:name=".ui.admin.AdminModeActivity"
-            android:exported="false"
-            android:label="管理者モード" />
-
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.TestApp">
+        <activity android:name=".ui.admin.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
