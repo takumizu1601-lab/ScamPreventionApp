@@ -43,7 +43,7 @@ fun AppScaffold(vm: MainViewModel) {
                 .fillMaxSize()
         ) {
             CheckScreen(vm, uiState)
-            Divider(modifier = Modifier.padding(vertical = 8.dp))
+            HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
             HistoryScreen(uiState)
         }
     }
@@ -91,7 +91,7 @@ fun HistoryScreen(uiState: UiState) {
                 Text("本文: ${event.text}")
                 Text("スコア: ${event.score}")
                 Text("ソース: ${event.source}")
-                Divider()
+                HorizontalDivider()
             }
         }
     }

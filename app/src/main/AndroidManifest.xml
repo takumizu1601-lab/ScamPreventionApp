@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Android 13+ で通知を出すために必要 -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:name=".ScamApp"
         android:allowBackup="true"
@@ -19,7 +22,7 @@
             </intent-filter>
         </activity>
 
-        <!-- ✅ 通知リスナーは application の直下に移動 -->
+        <!-- ✅ 通知リスナーは application の直下に定義 -->
         <service
             android:name=".notifications.AppNotificationListener"
             android:label="@string/app_name"
@@ -29,6 +32,10 @@
                 <action android:name="android.service.notification.NotificationListenerService" />
             </intent-filter>
         </service>
+
+        <activity
+            android:name=".ui.admin.DictionaryActivity"
+            android:exported="false" />
 
     </application>
 

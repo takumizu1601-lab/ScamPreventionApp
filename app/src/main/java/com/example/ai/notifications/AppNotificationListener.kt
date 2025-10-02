@@ -4,7 +4,7 @@ import android.app.Notification
 import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
 import com.example.ai.risk.Detector
-import com.example.ai.util.WarnNotifier
+import com.example.ai.notify.WarnNotifier
 
 class AppNotificationListener : NotificationListenerService() {
 
@@ -22,15 +22,16 @@ class AppNotificationListener : NotificationListenerService() {
         if (content.isEmpty()) return
 
         // 簡易検知ロジックへ
-        val (score, hits) = Detector.evaluate(content)
-        if (score >= Detector.DEFAULT_THRESHOLD) {
+        val result = Detector.evaluate(content)
+        if (result.score >= Detector.DEFAULT_THRESHOLD) {
             WarnNotifier.show(
                 context = this,
                 sourcePackage = sbn.packageName,
                 title = title.ifEmpty { "詐欺疑いの可能性" },
                 preview = content.take(120),
-                score = score,
-                hits = hits
+                score = result.score,
+                hits = result.hits,
+                isHighRisk = result.isHighRisk
             )
         }
     }

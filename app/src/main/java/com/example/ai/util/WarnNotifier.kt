@@ -32,20 +32,22 @@ object WarnNotifier {
         title: String,
         preview: String,
         score: Int,
-        hits: List<String>
+        hits: List<String>,
+        isHighRisk: Boolean
     ) {
         ensureChannel(context)
         val text = "疑い度: $score / 元アプリ: $sourcePackage\n$preview"
+        val displayTitle = if (isHighRisk) "[高リスク] $title" else title
 
         val notif = NotificationCompat.Builder(context, CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_stat_warning) // ステータスバー用（白アイコン）
+            .setSmallIcon(R.drawable.ic_stat_warning) // 白小アイコン
             .setLargeIcon(
                 BitmapFactory.decodeResource(
                     context.resources,
-                    R.drawable.ic_warning_yellow // 本文用の大アイコン（黄色）
+                    R.drawable.ic_warning_yellow // 黄色大アイコン
                 )
             )
-            .setContentTitle("⚠ 詐欺の可能性: $title")
+            .setContentTitle("⚠ 詐欺の可能性: $displayTitle")
             .setContentText(preview)
             .setStyle(NotificationCompat.BigTextStyle().bigText(text))
             .setPriority(NotificationCompat.PRIORITY_HIGH)

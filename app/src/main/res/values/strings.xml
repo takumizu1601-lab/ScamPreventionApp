@@ -4,4 +4,11 @@
     <!-- 通知チャンネル -->
     <string name="channel_scam_alerts">詐欺警告</string>
     <string name="channel_scam_alerts_desc">疑わしい通知を検知したときに表示する警告</string>
+
+    <!-- Dictionary -->
+    <string name="add_canonical_title">代表語を追加</string>
+    <string name="add_synonym_title">同義語を追加</string>
+    <string name="edit_synonym_title">同義語を編集</string>
+    <string name="delete">削除</string>
+    <string name="add_synonym">同義語を追加</string>
 </resources>
